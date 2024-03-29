@@ -1,7 +1,11 @@
 package it.itsvil.gestioneprogetti.entity;
 import it.itsvil.gestioneprogetti.utils.Ruolo;
 import jakarta.persistence.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
+
 @Document(collection = "utente")
 public class User {
     @Id
@@ -9,6 +13,9 @@ public class User {
     private String pwd;
     private String nome;
     private String cognome;
+
+    @DBRef
+    private List<Task> tasks;
     private Ruolo ruolo;
     public User() {
     }
@@ -42,6 +49,15 @@ public class User {
     public void setRuolo(Ruolo ruolo) {
         this.ruolo = ruolo;
     }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
     @Override
     public String toString() {
         return "User{" +
