@@ -11,9 +11,13 @@ public interface TaskService {
 
     Task addNewTask(Task task);
 
-    Task updateTask(String nomeTask, String nuovoNome, StatoTask statoTask, StatoTask nuovoStato);
+    Task updateTask(String nomeTask, String nuovoNome, StatoTask nuovoStato);
 
     List<Task> getAllTasks();
+
+    List<Task> findByIdProject(Long id);
+
+    List<Task> findTaskByEmail(String email);
 
 
 }

@@ -26,12 +26,12 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task updateTask(String nomeTask, String nuovoNome, StatoTask statoTask, StatoTask nuovoStato) {
+    public Task updateTask(String nomeTask, String nuovoNome, StatoTask nuovoStato) {
         if (nomeTask != null) {
             Task task = taskRepository.findByNomeTask(nomeTask);
             if (task != null) {
-                task.setNomeTask(nuovoNome);  // Aggiornare il nome del task
-                task.setStatoTask(nuovoStato);  // Aggiornare lo stato del task
+                task.setNomeTask(nuovoNome);
+                task.setStatoTask(nuovoStato);
                 Task updatedTask = taskRepository.save(task);
                 return updatedTask;
             }
@@ -45,4 +45,20 @@ public class TaskServiceImpl implements TaskService {
         return taskRepository.findAll();
     }
 
+    @Override
+    public List<Task> findByIdProject(Long id) {
+        if(id!=null && id>0){
+            List<Task> tasks = taskRepository.findByProgettoId(id);
+            return tasks.size()>=1 ? tasks : null;
+        }
+        return null;
+    }
+
+    @Override
+    public List<Task> findTaskByEmail(String email) {
+        if(email != null){
+            List<Task> tasks = taskRepository.findByEmail(email);
+            return tasks.size()>=1?tasks:null;
+        }return null;
+    }
 }

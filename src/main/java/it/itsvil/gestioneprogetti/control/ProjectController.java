@@ -19,9 +19,9 @@ import java.util.UUID;
 public class ProjectController {
     @Autowired
     private ProjectService projectService;
-    private UUID uuid = UUID.randomUUID();
     @PostMapping("/addProject")
     public ResponseEntity<Project> addNewProject(@RequestParam String nomeProject, HttpSession session){
+        UUID uuid = UUID.randomUUID();
         User user = keepUser(session);
         if(user.getRuolo().equals(Ruolo.PROJECT_MANAGER)) {
             Project project = new Project();

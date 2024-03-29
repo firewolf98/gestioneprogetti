@@ -15,8 +15,8 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nomeTask;
-    @DBRef
-    private Project progettoId;
+
+    private Long progettoId;
     private StatoTask statoTask;
     private String email;
 
@@ -25,10 +25,9 @@ public class Task {
     public Task() {
     }
 
-    public Task(Long id, String nomeTask, Project progettoId, StatoTask statoTask, String email) {
+    public Task(Long id, String nomeTask, StatoTask statoTask, String email) {
         this.id = id;
         this.nomeTask = nomeTask;
-        this.progettoId = progettoId;
         this.statoTask = statoTask;
         this.email = email;
     }
@@ -47,10 +46,12 @@ public class Task {
     public void setNomeTask(String nomeTask) {
         this.nomeTask = nomeTask;
     }
-    public Project getProgettoId() {
+
+    public Long getProgettoId() {
         return progettoId;
     }
-    public void setProgettoId(Project progettoId) {
+
+    public void setProgettoId(Long progettoId) {
         this.progettoId = progettoId;
     }
 
