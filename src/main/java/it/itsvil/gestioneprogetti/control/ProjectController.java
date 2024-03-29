@@ -21,7 +21,7 @@ public class ProjectController {
     private ProjectService projectService;
     private UUID uuid = UUID.randomUUID();
     @PostMapping("/addProject")
-    public ResponseEntity<Project> addUser(@RequestParam String nomeProject, HttpSession session){
+    public ResponseEntity<Project> addNewProject(@RequestParam String nomeProject, HttpSession session){
         User user = keepUser(session);
         if(user.getRuolo().equals(Ruolo.PROJECT_MANAGER)) {
             Project project = new Project();

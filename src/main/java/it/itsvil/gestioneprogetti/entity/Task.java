@@ -18,7 +18,19 @@ public class Task {
     @DBRef
     private Project progettoId;
     private StatoTask statoTask;
+    private String email;
+
+
+
     public Task() {
+    }
+
+    public Task(Long id, String nomeTask, Project progettoId, StatoTask statoTask, String email) {
+        this.id = id;
+        this.nomeTask = nomeTask;
+        this.progettoId = progettoId;
+        this.statoTask = statoTask;
+        this.email = email;
     }
 
     public Long getId() {
@@ -48,13 +60,23 @@ public class Task {
     public void setStatoTask(StatoTask statoTask) {
         this.statoTask = statoTask;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return "Task{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", nomeTask='" + nomeTask + '\'' +
                 ", progettoId=" + progettoId +
                 ", statoTask=" + statoTask +
+                ", email='" + email + '\'' +
                 '}';
     }
 }
